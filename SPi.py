@@ -8,6 +8,7 @@ speed_hz = 5000
 
 PIN_INTERRUPCION = 16
 
+
 # Para leer se tiene que poner 01 delante del registro para leer
 # Para escribir se tiene que poner 00 delante del registro para leer
 # Se va a emplear una máscara con la que hacer 
