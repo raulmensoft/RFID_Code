@@ -131,7 +131,7 @@ def comprobarOK():
     recibido = leerRegistro(0x2A,1)
     print(recibido)
     recibido= recibido[0]>>2
-    ok = 0x01 | recibido
+    ok = 0x01 & recibido
     
     print("Todo ok: {}".format(ok))
     return ok
