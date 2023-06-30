@@ -6,8 +6,8 @@ bus = 0
 device = 0
 speed_hz = 5000
 
-PIN_INTERRUPCION = 16
-
+PIN_INTERRUPCION = 22
+PIN_NCS = 23
 
 # Para leer se tiene que poner 01 delante del registro para leer
 # Para escribir se tiene que poner 00 delante del registro para leer
@@ -73,6 +73,10 @@ def cerrarComunicacion():
     
 def encenderRFID():
     print("Se empieza a encender la placa")
+    # Se establece el pin de NCS como low
+
+    GPIO.output(PIN_NCS, GPIO.LOW)
+
     # Para encender la placa se tienen que modificar los siguientes registros:
     # 0x00
     # 0x01
@@ -130,6 +134,10 @@ if __name__ == '__main__':
     GPIO.setup(PIN_INTERRUPCION, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.add_event_detect(PIN_INTERRUPCION, GPIO.FALLING, callback=leerInterrupcion, bouncetime=200)
 
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(PIN_NCS, GPIO.OUT)
+    GPIO.outpt(PIN_NCS,GPIO.HIGH)
+    
     # Se arranca el código
     # Se enciende el RFID
     encenderRFID()
