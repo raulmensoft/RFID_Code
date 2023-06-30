@@ -120,7 +120,8 @@ def leerDato():
 def comprobarOK():
     # Función para leer si la transmisión está Ok
     recibido = leerRegistro(0x2A,1)
-    recibido= recibido>>2
+    print(recibido)
+    recibido= recibido[0]>>2
     ok = 0x01 | recibido
     
     print("Todo ok: {}".format(ok))
