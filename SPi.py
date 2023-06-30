@@ -155,6 +155,7 @@ if __name__ == '__main__':
     todo_ok = comprobarOK()
     while todo_ok != 1:
         print("No está todo ok")
+        todo_ok = comprobarOK()
         
     print("La placa ha sido inicializada")
     while True:
