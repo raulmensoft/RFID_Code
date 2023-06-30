@@ -162,7 +162,7 @@ if __name__ == '__main__':
             time.sleep(1)
             leerRSSI()
             time.sleep(1)
-            leerRFOK
+            leerRFOK()
 
         except KeyboardInterrupt:
             print("Se termina el código")
