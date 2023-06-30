@@ -92,7 +92,7 @@ def modificarGanancia():
 def leerRSSI():
     # Funcióp para leer el nivel de señal recibida
     resultado = leerRegistro(0x2B,1)
-    
+    resultado = resultado[0]
     rssi_q = 0xF0 | resultado
     rssi_i = 0x0F | resultado
 
