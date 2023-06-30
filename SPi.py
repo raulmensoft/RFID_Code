@@ -8,7 +8,7 @@ device = 0
 speed_hz = 5000
 
 PIN_INTERRUPCION = 6
-PIN_NCS = 29
+PIN_NCS = 5
 PIN_ENABLE = 13
 
 # Para leer se tiene que poner 01 delante del registro para leer
