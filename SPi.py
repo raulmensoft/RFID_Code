@@ -135,7 +135,7 @@ if __name__ == '__main__':
 
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(PIN_NCS, GPIO.OUT)
-    GPIO.outpt(PIN_NCS,GPIO.HIGH)
+    GPIO.output(PIN_NCS,GPIO.HIGH)
 
     # Se arranca el código
     # Se enciende el RFID
