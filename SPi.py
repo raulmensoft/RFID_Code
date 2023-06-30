@@ -6,8 +6,9 @@ bus = 0
 device = 0
 speed_hz = 5000
 
-PIN_INTERRUPCION = 22
-PIN_NCS = 23
+PIN_INTERRUPCION = 6
+PIN_NCS = 5
+PIN_ENABLE = 13
 
 # Para leer se tiene que poner 01 delante del registro para leer
 # Para escribir se tiene que poner 00 delante del registro para leer
@@ -27,8 +28,6 @@ print("Se ha arrancado el código para comunicar por SPI, los parámetros son:")
 print("Bus {}".format(bus))
 print("Dispositivo {}".format(device))
 print("Velocidad: {}".format(speed_hz))
-print ('SPI Speed: %d Hz (%d kHz)'%(spi.speed, spi.speed/1000))
-print ('Mode Bits: 0x%x, CS-High: %d'%(spi.modeBits, spi.csHigh))
 
 
 def leerRegistro(registro, bytes):
@@ -137,7 +136,7 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(PIN_NCS, GPIO.OUT)
     GPIO.outpt(PIN_NCS,GPIO.HIGH)
-    
+
     # Se arranca el código
     # Se enciende el RFID
     encenderRFID()
