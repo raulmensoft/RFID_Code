@@ -1,6 +1,7 @@
 # Código para comunicarse desde la raspberrypi hasta la placa RFID
 import spidev
 import RPi.GPIO as GPIO
+import time 
 
 bus = 0
 device = 0
@@ -89,6 +90,14 @@ def modificarGanancia():
     # Función para modificar la ganancia de la transmisión
     pass
 
+def leerRFOK():
+    resultado = leerRegistro(0x2A,1)
+    resultado = resultado[0]
+
+    recibido = resultado >> 2
+    recibido = recibido &1
+    print("RF ok {}".format(recibido))
+
 def leerRSSI():
     # Funcióp para leer el nivel de señal recibida
     resultado = leerRegistro(0x2B,1)
@@ -104,7 +113,7 @@ def leerInterrupcion():
     resultado = leerRegistro(0x37,1)
     
     # Se aplican las máscaras necesarias
-    recibido = 0x20| resultado
+    recibido = 0x20| resultado[0]
     recibido = recibido >> 5
     
     print("Valor del registro recibido: {}".format(recibido))
@@ -150,7 +159,11 @@ if __name__ == '__main__':
     print("La placa ha sido inicializada")
     while True:
         try:
+            time.sleep(1)
             leerRSSI()
+            time.sleep(1)
+            leerRFOK
+
         except KeyboardInterrupt:
             print("Se termina el código")
             break
